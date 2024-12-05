@@ -1,0 +1,29 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Crear el grupo de Administrador -->
+        <record id="group_curse_admin" model="res.groups">
+            <field name="name">Administrator (Curse)</field>
+            <field name="category_id" ref="base.module_category_administration"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="comment">Full access to the Curse module</field>
+        </record>
+
+        <!-- Crear el grupo de Usuario -->
+        <record id="group_curse_user" model="res.groups">
+            <field name="name">User (Curse)</field>
+            <field name="category_id" ref="base.module_category_administration"/>
+            <field name="users" eval="[(4, ref('base.user_demo'))]"/>
+            <field name="comment">Limited access to the Curse module</field>
+        </record>
+
+        <record id="menu_cursos" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('course_ecommerce.group_curse_admin')), (4, ref('course_ecommerce.group_curse_user'))]"/>
+        </record>
+        <record id="menu_estudiantes" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('course_ecommerce.group_curse_admin')), (4, ref('course_ecommerce.group_curse_user'))]"/>
+        </record>
+        <record id="menu_notas_estudiantes" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('course_ecommerce.group_curse_admin')), (4, ref('course_ecommerce.group_curse_user'))]"/>
+        </record>
+    </data>
+</odoo>

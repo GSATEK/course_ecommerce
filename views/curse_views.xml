@@ -1,0 +1,51 @@
+<odoo>
+    <record id="view_curse_form" model="ir.ui.view">
+        <field name="name">curse.form</field>
+        <field name="model">curse</field>
+        <field name="arch" type="xml">
+            <form string="Curso">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="product_id"/>
+                        <field name="tutor_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Estudiantes">
+                            <field name="line_student_ids">
+                                <tree string="Estudiantes">
+                                    <field name="res_partner"/>
+                                    <field name="registration_date"/>
+                                    <field name="grade_average"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_curse_tree" model="ir.ui.view">
+        <field name="name">curse.tree</field>
+        <field name="model">curse</field>
+        <field name="arch" type="xml">
+            <tree string="Curso">
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="tutor_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_website_curse" model="ir.actions.act_window">
+        <field name="name">Curso</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">curse</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crear nuevo curso
+                </p>
+            </field>
+    </record>
+    <menuitem id="menu_cursos_course" name="Cursos" parent="menu_cursos" action="action_website_curse" sequence="10"/>
+</odoo>

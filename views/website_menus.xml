@@ -1,0 +1,3 @@
+<odoo>
+    <menuitem id="menu_cursos" name="Cursos" parent="website.menu_website_configuration" groups="base.group_system" sequence="10"/>
+</odoo>

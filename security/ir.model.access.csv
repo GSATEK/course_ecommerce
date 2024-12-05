@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_curse__admin,curse.access,model_curse,group_curse_admin,1,1,1,1
+access_curse__user,curse.access,model_curse,group_curse_user,1,0,0,0
+access_curse_student_note_admin,curse.student.note.access,model_curse_student_note,group_curse_admin,1,1,1,1
+access_curse_student_note_user,curse.student.note.access,model_curse_student_note,group_curse_user,1,0,0,0
+access_curse_student_admin,curse.student.access,model_curse_student,group_curse_admin,1,1,1,1
+access_curse_student_user,curse.student.access,model_curse_student,group_curse_user,1,0,0,0

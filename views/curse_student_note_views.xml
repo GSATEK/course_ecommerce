@@ -1,0 +1,40 @@
+<odoo>
+    <record id="view_curse_student_note_form" model="ir.ui.view">
+        <field name="name">curse.student.note.form</field>
+        <field name="model">curse.student.note</field>
+        <field name="arch" type="xml">
+            <form string="Nota">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="nota"/>
+                        <field name="student_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_curse_student_tree" model="ir.ui.view">
+        <field name="name">curse.student.tree</field>
+        <field name="model">curse.student</field>
+        <field name="arch" type="xml">
+            <tree string="Estudiante">
+                <field name="res_partner"/>
+                <field name="registration_date"/>
+                <field name="grade_average"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_website_students_grades" model="ir.actions.act_window">
+        <field name="name">Notas de estudiantes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">curse.student.note</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Notas de estudiantes
+                </p>
+            </field>
+    </record>
+    <menuitem id="menu_notas_estudiantes" name="Notas de Estudiantes" parent="menu_cursos" action="action_website_students_grades"  sequence="30"/>
+</odoo>

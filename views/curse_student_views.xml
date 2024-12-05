@@ -1,0 +1,50 @@
+<odoo>
+    <record id="view_curse_student_form" model="ir.ui.view">
+        <field name="name">curse.student.form</field>
+        <field name="model">curse.student</field>
+        <field name="arch" type="xml">
+            <form string="Estudiante">
+                <sheet>
+                    <group>
+                        <field name="res_partner"/>
+                        <field name="registration_date"/>
+                        <field name="grade_average"/>
+                    </group>
+                    <notebook>
+                        <page string="Notas">
+                            <field name="note_ids">
+                                <tree string="Notas">
+                                    <field name="name"/>
+                                    <field name="nota"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_curse_student_tree" model="ir.ui.view">
+        <field name="name">curse.student.tree</field>
+        <field name="model">curse.student</field>
+        <field name="arch" type="xml">
+            <tree string="Estudiante">
+                <field name="res_partner"/>
+                <field name="registration_date"/>
+                <field name="grade_average"/>
+            </tree>
+        </field>
+    </record>
+     <record id="action_website_students" model="ir.actions.act_window">
+        <field name="name">Estudiantes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">curse.student</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Menu de estudiantes
+                </p>
+            </field>
+    </record>
+    <menuitem id="menu_estudiantes" name="Estudiantes" parent="menu_cursos" action="action_website_students" sequence="20"/>
+</odoo>
