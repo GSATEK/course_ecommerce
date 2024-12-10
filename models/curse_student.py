@@ -9,6 +9,12 @@ class CurseStudent(models.Model):
     note_ids = fields.One2many('curse.student.note', 'student_id', string='Notas')
     grade_average = fields.Float(compute='_compute_grade_average', string='Promedio de Notas')
     curse_id = fields.Many2one('curse', string='Curso')
+    name = fields.Char(compute='_compute_name', store=True, string='Nombre del Estudiante')
+
+    @api.depends('res_partner')
+    def _compute_name(self):
+        for record in self:
+            record.name = record.res_partner.name if record.res_partner else ''
 
     @api.depends('note_ids.nota')
     def _compute_grade_average(self):

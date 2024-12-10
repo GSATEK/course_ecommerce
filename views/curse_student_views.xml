@@ -6,7 +6,7 @@
             <form string="Estudiante">
                 <sheet>
                     <group>
-                        <field name="res_partner"/>
+                        <field name="res_partner" widget="many2one"/>
                         <field name="registration_date"/>
                         <field name="grade_average"/>
                     </group>
@@ -29,7 +29,7 @@
         <field name="model">curse.student</field>
         <field name="arch" type="xml">
             <tree string="Estudiante">
-                <field name="res_partner"/>
+                <field name="res_partner" widget="many2one"/>
                 <field name="registration_date"/>
                 <field name="grade_average"/>
             </tree>

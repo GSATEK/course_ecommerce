@@ -10,7 +10,7 @@
     'website': "http://www.yourcompany.com",
     'category': 'Uncategorized',
     'version': '0.1',
-    'depends': ['base', 'account', 'sale_management', 'website', 'website_sale', 'crm'],
+    'depends': ['base', 'account', 'sale_management', 'website', 'website_sale', 'crm','base_automation','sale'],
     'data': [
         'security/curse_security.xml',
         'security/ir.model.access.csv',
@@ -19,6 +19,7 @@
         'views/curse_student_views.xml',
         'views/curse_student_note_views.xml',
         'views/website_menus.xml',
+        'data/automated_actions.xml',
     ],
 
     'installable': True,

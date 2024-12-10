@@ -8,7 +8,7 @@
                     <group>
                         <field name="name"/>
                         <field name="nota"/>
-                        <field name="student_id"/>
+                        <field name="student_name" readonly="1"/>
                     </group>
                 </sheet>
             </form>

@@ -29,8 +29,7 @@ class CustomWebsiteSale(WebsiteSale):
         # Filter products with parent_id False and within the date range
         filtered_products = products.filtered(
             lambda p: not p.parent_id and
-                      (not p.date_start or p.date_start <= today) and
-                      (not p.date_end or p.date_end >= today)
+                      (not p.date_start or p.date_start >= today)
         )
 
         return fuzzy_search_term, product_count, filtered_products
