@@ -3,6 +3,16 @@ from odoo import models, fields, api
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
+    external_order_status = fields.Selection([
+        ('cambio', 'Cambio de curso'),
+        ('pendiente', 'Pendiente'),
+        ('en_proceso', 'En proceso)'),
+        ('completado', 'Completado'),
+        ('cancelado', 'Cancelado'),
+        ('error', 'Error'),
+        ('reembolsado', 'Reembolsado')
+    ], string='Estado de la Orden Externa')
+
     @api.model
     def create(self, vals):
         order = super(SaleOrder, self).create(vals)

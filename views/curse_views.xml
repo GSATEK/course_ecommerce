@@ -16,6 +16,7 @@
                                 <tree string="Estudiantes">
                                     <field name="res_partner"/>
                                     <field name="registration_date"/>
+                                    <field name="specialty"/>
                                     <field name="grade_average"/>
                                 </tree>
                             </field>

@@ -1,0 +1,51 @@
+<odoo>
+    <record id="action_import_student_wizard" model="ir.actions.act_window">
+            <field name="name">Importar Estudiantes</field>
+        <field name="res_model">import.student.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_import_course_tutor_wizard" model="ir.actions.act_window">
+        <field name="name">Importar Cursos</field>
+        <field name="res_model">import.course.tutor.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_import_students" name="Importar Estudiantes" parent="menu_cursos" action="action_import_student_wizard"/>
+    <menuitem id="menu_import_courses_tutors" name="Importar Cursos" parent="menu_cursos" action="action_import_course_tutor_wizard"/>
+
+    <record id="view_import_student_wizard_form" model="ir.ui.view">
+        <field name="name">import.student.wizard.form</field>
+        <field name="model">import.student.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Importar Estudiantes">
+                <group>
+                    <field name="file"/>
+                    <field name="filename"/>
+                </group>
+                <footer>
+                    <button string="Importar" type="object" name="import_students" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="view_import_course_tutor_wizard_form" model="ir.ui.view">
+        <field name="name">import.course.tutor.wizard.form</field>
+        <field name="model">import.course.tutor.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Importar Cursos">
+                <group>
+                    <field name="file"/>
+                    <field name="filename"/>
+                </group>
+                <footer>
+                    <button string="Importar" type="object" name="import_courses_tutors" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

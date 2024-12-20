@@ -8,7 +8,8 @@ class ProductTemplate(models.Model):
     date_end = fields.Date(string='Fecha de Fin')
     tutor_id = fields.Many2one('res.partner', string='Tutor')
     xtec = fields.Selection([
-        ('yes', 'SÍ'),
+        ('si', 'SÍ'),
         ('no', 'NO'),
         ('temporal', 'TEMPORAL')
     ], string='XTEC')
+    external_id = fields.Char(string='External ID')

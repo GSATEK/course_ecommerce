@@ -16,14 +16,5 @@
             <field name="comment">Limited access to the Curse module</field>
         </record>
 
-        <record id="menu_cursos" model="ir.ui.menu">
-            <field name="groups_id" eval="[(4, ref('course_ecommerce.group_curse_admin')), (4, ref('course_ecommerce.group_curse_user'))]"/>
-        </record>
-        <record id="menu_estudiantes" model="ir.ui.menu">
-            <field name="groups_id" eval="[(4, ref('course_ecommerce.group_curse_admin')), (4, ref('course_ecommerce.group_curse_user'))]"/>
-        </record>
-        <record id="menu_notas_estudiantes" model="ir.ui.menu">
-            <field name="groups_id" eval="[(4, ref('course_ecommerce.group_curse_admin')), (4, ref('course_ecommerce.group_curse_user'))]"/>
-        </record>
     </data>
 </odoo>

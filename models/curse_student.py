@@ -10,7 +10,7 @@ class CurseStudent(models.Model):
     grade_average = fields.Float(compute='_compute_grade_average', string='Promedio de Notas')
     curse_id = fields.Many2one('curse', string='Curso')
     name = fields.Char(compute='_compute_name', store=True, string='Nombre del Estudiante')
-
+    specialty = fields.Char(string='Especialidad')
     @api.depends('res_partner')
     def _compute_name(self):
         for record in self:
