@@ -8,7 +8,6 @@ class Curse(models.Model):
     product_id = fields.Many2one('product.template', domain="[('parent_id', '=', False)]", string='Producto')
     line_student_ids = fields.One2many('curse.student', 'curse_id', string='Estudiantes')
     tutor_id = fields.Many2one('res.partner', related='product_id.tutor_id', string='Tutor')
-
     @api.depends('product_id', 'product_id.date_start', 'product_id.date_end')
     def _compute_name(self):
         for record in self:

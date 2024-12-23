@@ -13,8 +13,8 @@
         <field name="target">new</field>
     </record>
 
-    <menuitem id="menu_import_students" name="Importar Estudiantes" parent="menu_cursos" action="action_import_student_wizard"/>
     <menuitem id="menu_import_courses_tutors" name="Importar Cursos" parent="menu_cursos" action="action_import_course_tutor_wizard"/>
+    <menuitem id="menu_import_students" name="Importar Estudiantes" parent="menu_cursos" action="action_import_student_wizard"/>
 
     <record id="view_import_student_wizard_form" model="ir.ui.view">
         <field name="name">import.student.wizard.form</field>
@@ -24,6 +24,8 @@
                 <group>
                     <field name="file"/>
                     <field name="filename"/>
+                    <field name="from_row"/>
+                    <field name="to_row"/>
                 </group>
                 <footer>
                     <button string="Importar" type="object" name="import_students" class="btn-primary"/>
@@ -40,6 +42,8 @@
                 <group>
                     <field name="file"/>
                     <field name="filename"/>
+                    <field name="from_row"/>
+                    <field name="to_row"/>
                 </group>
                 <footer>
                     <button string="Importar" type="object" name="import_courses_tutors" class="btn-primary"/>

@@ -48,5 +48,5 @@
                 </p>
             </field>
     </record>
-    <menuitem id="menu_estudiantes" name="Estudiantes" parent="menu_cursos" action="action_website_students" sequence="20"/>
+    <menuitem id="menu_estudiantes" name="Estudiantes" parent="menu_cursos" action="action_website_students"/>
 </odoo>
