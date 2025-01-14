@@ -23,7 +23,6 @@
             <form string="Importar Estudiantes">
                 <group>
                     <field name="file"/>
-                    <field name="filename"/>
                     <field name="from_row"/>
                     <field name="to_row"/>
                 </group>
@@ -41,7 +40,6 @@
             <form string="Importar Cursos">
                 <group>
                     <field name="file"/>
-                    <field name="filename"/>
                     <field name="from_row"/>
                     <field name="to_row"/>
                 </group>

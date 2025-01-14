@@ -29,24 +29,39 @@ class ImportStudentWizard(models.TransientModel):
             student = self.env['res.partner'].search([('name', '=', student_name)], limit=1)
             if not student:
                 student = self.env['res.partner'].create({'name': student_name})
+                self.env.cr.commit()
 
             course = self.env['curse'].search([('product_id.name', '=', course_name)], limit=1)
             if course:
-                self.env['curse.student'].create({
-                    'res_partner': student.id,
-                    'registration_date': registration_date,
-                    'specialty': specialty,
-                    'curse_id': course.id,
-                })
+                existing_enrollment = self.env['curse.student'].search([
+                    ('res_partner', '=', student.id),
+                    ('curse_ids', 'in', course.id)
+                ], limit=1)
+                if not existing_enrollment:
+                    curse_student = self.env['curse.student'].search([('res_partner', '=', student.id)], limit=1)
+                    if curse_student:
+                        curse_student.write({
+                            'curse_ids': [(4, course.id)],
+                            'registration_date': registration_date,
+                            'specialty': specialty,
+                        })
+                    else:
+                        self.env['curse.student'].create({
+                            'res_partner': student.id,
+                            'registration_date': registration_date,
+                            'specialty': specialty,
+                            'curse_ids': [(4, course.id)],
+                        })
 
-                order_vals = {
-                    'partner_id': student.id,
-                    'external_order_status': order_status,
-                    'order_line': [(0, 0, {
-                        'product_id': course.product_id.id,
-                        'name': course.product_id.name,
-                        'product_uom_qty': 1,
-                        'price_unit': course.product_id.list_price,
-                    })]
-                }
-                self.env['sale.order'].create([order_vals])
+                    order_vals = {
+                        'partner_id': student.id,
+                        'external_order_status': order_status,
+                        'order_line': [(0, 0, {
+                            'product_id': course.product_id.id,
+                            'name': course.product_id.name,
+                            'product_uom_qty': 1,
+                            'price_unit': course.product_id.list_price,
+                        })]
+                    }
+                    self.env['sale.order'].create([order_vals])
+

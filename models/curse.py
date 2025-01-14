@@ -6,8 +6,11 @@ class Curse(models.Model):
 
     name = fields.Char(compute='_compute_name', store=True, string='Nombre')
     product_id = fields.Many2one('product.template', domain="[('parent_id', '=', False)]", string='Producto')
-    line_student_ids = fields.One2many('curse.student', 'curse_id', string='Estudiantes')
+    line_student_ids = fields.Many2many('curse.student', 'curse_student_rel', 'curse_id', 'student_id', string='Estudiantes', ondelete='cascade')
     tutor_id = fields.Many2one('res.partner', related='product_id.tutor_id', string='Tutor')
+    date_start = fields.Date(string='Fecha de Inicio')
+    date_end = fields.Date(string='Fecha de Fin')
+
     @api.depends('product_id', 'product_id.date_start', 'product_id.date_end')
     def _compute_name(self):
         for record in self:

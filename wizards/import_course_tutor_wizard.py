@@ -42,5 +42,8 @@ class ImportCourseTutorWizard(models.TransientModel):
                 course = self.env['curse'].create({
                     'name': name,
                     'product_id': product.id,
+                    'date_start': date_start,
+                    'date_end': date_end,
+                    'tutor_id': self.env['res.partner'].search([('name', '=', tutor_name)], limit=1).id,
                 })
                 course.message_post(body=comment)

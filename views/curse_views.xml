@@ -8,16 +8,15 @@
                     <group>
                         <field name="name"/>
                         <field name="product_id"/>
+                        <field name="date_start"/>
+                        <field name="date_end"/>
                         <field name="tutor_id"/>
                     </group>
                     <notebook>
                         <page string="Estudiantes">
                             <field name="line_student_ids">
                                 <tree string="Estudiantes">
-                                    <field name="res_partner"/>
-                                    <field name="registration_date"/>
-                                    <field name="specialty"/>
-                                    <field name="grade_average"/>
+                                    <field name="name"/>
                                 </tree>
                             </field>
                         </page>
@@ -33,6 +32,8 @@
             <tree string="Curso">
                 <field name="name"/>
                 <field name="product_id"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
                 <field name="tutor_id"/>
             </tree>
         </field>

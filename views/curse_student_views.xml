@@ -12,6 +12,13 @@
                         <field name="grade_average"/>
                     </group>
                     <notebook>
+                        <page string="Cursos">
+                            <field name="curse_ids">
+                                <tree string="Cursos">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </page>
                         <page string="Notas">
                             <field name="note_ids">
                                 <tree string="Notas">
