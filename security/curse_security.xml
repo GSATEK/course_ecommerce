@@ -12,7 +12,6 @@
         <record id="group_curse_user" model="res.groups">
             <field name="name">User (Curse)</field>
             <field name="category_id" ref="base.module_category_administration"/>
-            <field name="users" eval="[(4, ref('base.user_demo'))]"/>
             <field name="comment">Limited access to the Curse module</field>
         </record>
 
