@@ -5,6 +5,11 @@
         <field name="arch" type="xml">
             <form string="Curso">
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_students" type="object" class="oe_stat_button" icon="fa-users">
+                            <field name="student_count" widget="statinfo" string="Estudiantes"/>
+                        </button>
+                    </div>
                     <group>
                         <field name="name"/>
                         <field name="product_id"/>
@@ -12,16 +17,11 @@
                         <field name="date_end"/>
                         <field name="tutor_id"/>
                     </group>
-                    <notebook>
-                        <page string="Estudiantes">
-                            <field name="line_student_ids">
-                                <tree string="Estudiantes">
-                                    <field name="name"/>
-                                </tree>
-                            </field>
-                        </page>
-                    </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+
             </form>
         </field>
     </record>

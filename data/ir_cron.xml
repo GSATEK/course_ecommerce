@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record id="ir_cron_publish_courses" model="ir.cron">
+            <field name="name">Publicar Cursos</field>
+            <field name="model_id" ref="model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">model.publish_courses()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+        </record>
+    </data>
+</odoo>

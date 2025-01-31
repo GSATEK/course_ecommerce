@@ -11,6 +11,9 @@
                         <field name="student_name" readonly="1"/>
                     </group>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
             </form>
         </field>
     </record>

@@ -9,3 +9,5 @@ access_import_student_wizard_admin,import.student.wizard.access,model_import_stu
 access_import_student_wizard_user,import.student.wizard.access,model_import_student_wizard,group_curse_user,1,0,0,0
 access_import_course_tutor_wizard_admin,import.course.tutor.wizard.access,model_import_course_tutor_wizard,group_curse_admin,1,1,1,1
 access_import_course_tutor_wizard_user,import.course.tutor.wizard.access,model_import_course_tutor_wizard,group_curse_user,1,0,0,0
+access_res_config_settings_admin,res.config.settings.access,model_res_config_settings,base.group_system,1,1,1,1
+access_res_config_settings_user,res.config.settings.access,model_res_config_settings,group_curse_user,1,0,0,0

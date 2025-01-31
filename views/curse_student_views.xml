@@ -5,30 +5,43 @@
         <field name="arch" type="xml">
             <form string="Estudiante">
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_courses" type="object" class="oe_stat_button" icon="fa-book">
+                            <field name="course_count" widget="statinfo" string="Cursos"/>
+                        </button>
+                        <button name="action_view_notes" type="object" class="oe_stat_button" icon="fa-sticky-note">
+                            <field name="note_count" widget="statinfo" string="Notas"/>
+                        </button>
+                        <button name="action_view_orders" type="object" class="oe_stat_button" icon="fa-shopping-cart">
+                            <field name="order_ids" widget="statinfo" string="Pedidos"/>
+                        </button>
+                       <button type="object" class="oe_stat_button" icon="fa-pencil-square-o" name="action_view_invoiced_orders">
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="total_invoiced" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                </span>
+                                <span class="o_stat_text">Facturado</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="res_partner" widget="many2one"/>
+                            <field name="image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'avatar_128'}"/>
+                        </h1>
+                    </div>
                     <group>
-                        <field name="res_partner" widget="many2one"/>
-                        <field name="specialty"/>
-                        <field name="registration_date"/>
-                        <field name="grade_average"/>
+                        <group>
+                            <field name="specialty"/>
+                            <field name="registration_date"/>
+                            <field name="grade_average"/>
+                        </group>
                     </group>
-                    <notebook>
-                        <page string="Cursos">
-                            <field name="curse_ids">
-                                <tree string="Cursos">
-                                    <field name="name"/>
-                                </tree>
-                            </field>
-                        </page>
-                        <page string="Notas">
-                            <field name="note_ids">
-                                <tree string="Notas">
-                                    <field name="name"/>
-                                    <field name="nota"/>
-                                </tree>
-                            </field>
-                        </page>
-                    </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
             </form>
         </field>
     </record>
@@ -44,11 +57,34 @@
             </tree>
         </field>
     </record>
-     <record id="action_website_students" model="ir.actions.act_window">
+    <record id="view_curse_student_kanban" model="ir.ui.view">
+        <field name="name">curse.student.kanban</field>
+        <field name="model">curse.student</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="res_partner"/>
+                <field name="specialty"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img t-att-src="kanban_image('res.partner', 'image_128', record.res_partner.raw_value)"/>
+                            </div>
+                            <div class="o_kanban_details">
+                                <strong><field name="res_partner"/></strong>
+                                <div><field name="specialty"/></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="action_website_students" model="ir.actions.act_window">
         <field name="name">Estudiantes</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">curse.student</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form</field>
         <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Menu de estudiantes

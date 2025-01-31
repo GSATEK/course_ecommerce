@@ -1,0 +1,45 @@
+<odoo>
+    <record id="view_res_config_settings_form_inherit_custom" model="ir.ui.view">
+    <field name="name">res.config.settings.form.inherit.custom</field>
+    <field name="model">res.config.settings</field>
+    <field name="priority" eval="20"/>
+    <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Descuentos de Estudiantes" string="Descuentos de Estudiantes">
+                    <h2>Configuración de Descuentos de Estudiantes</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div>
+                                <label for="discount_active">Descuento Activo</label>
+                                <field name="discount_active"/>
+                            </div>
+                            <div >
+                                <label for="discount_duration" >Duración del descuento de estudiantes</label>
+                                <field name="discount_duration"/>
+                                <field name="discount_duration_type"/>
+                            </div>
+                            <div >
+                                <div class="text-muted">
+                                    Ingrese la duración del descuento de estudiantes.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div>
+                                <label for="discount_percentage">Porcentaje de descuento de estudiantes</label>
+                                <field name="discount_percentage"/>
+                            </div>
+                            <div>
+                                <div class="text-muted">
+                                    Ingrese el porcentaje de descuento de estudiantes.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </xpath>
+    </field>
+</record>
+
+</odoo>

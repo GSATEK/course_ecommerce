@@ -21,7 +21,9 @@
         'views/curse_student_note_views.xml',
         'views/import_wizard_views.xml',
         'views/sale_order_views.xml',
+        'views/curse_res_config.xml',
         'data/automated_actions.xml',
+        'data/ir_cron.xml',
     ],
 
     'installable': True,

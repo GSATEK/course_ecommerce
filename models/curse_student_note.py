@@ -2,6 +2,7 @@ from odoo import models, fields, api
 
 class CurseStudentNote(models.Model):
     _name = 'curse.student.note'
+    _inherit = ['mail.thread']
 
     name = fields.Char(string='Nombre')
     nota = fields.Float(string='Nota')

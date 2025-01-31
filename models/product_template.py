@@ -1,4 +1,6 @@
-from odoo import models, fields
+from odoo import models, fields, api
+from datetime import date
+
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
@@ -13,3 +15,10 @@ class ProductTemplate(models.Model):
         ('temporal', 'TEMPORAL')
     ], string='XTEC')
     external_id = fields.Char(string='External ID')
+
+    @api.model
+    def publish_courses(self):
+        today = date.today()
+        courses = self.search([('date_start', '<=', today), ('date_end', '>=', today), ('website_published', '=', False)])
+        for course in courses:
+            course.write({'website_published': True})

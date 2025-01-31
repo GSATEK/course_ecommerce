@@ -63,5 +63,8 @@ class ImportStudentWizard(models.TransientModel):
                             'price_unit': course.product_id.list_price,
                         })]
                     }
-                    self.env['sale.order'].create([order_vals])
+                    sale_order = self.env['sale.order'].create([order_vals])
+                    sale_order.action_confirm()
+                    sale_order._create_invoices()
+
 
