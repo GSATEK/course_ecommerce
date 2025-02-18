@@ -71,7 +71,7 @@ class CustomWebsiteSale(WebsiteSale):
         if order:
             config = request.env['res.config.settings'].sudo().get_values()
             if config.get('discount_active'):
-                discount_percentage = config.get('discount_percentage')
+                discount_percentage = config.get('discount_percentage') * 100
                 discount_duration = config.get('discount_duration')
                 discount_duration_type = config.get('discount_duration_type')
 

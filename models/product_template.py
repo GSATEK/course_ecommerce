@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 from datetime import date
+import re
 
 
 class ProductTemplate(models.Model):
@@ -22,3 +23,12 @@ class ProductTemplate(models.Model):
         courses = self.search([('date_start', '<=', today), ('date_end', '>=', today), ('website_published', '=', False)])
         for course in courses:
             course.write({'website_published': True})
+
+    @api.model
+    def update_product_prices(self):
+        products = self.search([])
+        for product in products:
+            match = re.search(r'-\s*(\d+)\s*€', product.name)
+            if match:
+                price = float(match.group(1))
+                product.write({'list_price': price})

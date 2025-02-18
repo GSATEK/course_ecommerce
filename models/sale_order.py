@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-
+import re
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
@@ -32,11 +32,20 @@ class SaleOrder(models.Model):
                     if curse:
                         existing_student = self.env['curse.student'].sudo().search([
                             ('res_partner', '=', self.partner_id.id),
-                            ('curse_id', '=', curse.id)
+                            ('curse_ids', 'in', curse.ids)
                         ])
                         if not existing_student:
                             self.env['curse.student'].create({
                                 'res_partner': self.partner_id.id,
                                 'registration_date': fields.Date.today(),
-                                'curse_id': curse.id,
+                                'curse_ids': [(6, 0, curse.ids)],
                             })
+    @api.model
+    def update_sale_order_lines(self):
+        orders = self.search([])
+        for order in orders:
+            for line in order.order_line:
+                match = re.search(r'-\s*(\d+)\s*€', line.name)
+                if match:
+                    price = float(match.group(1))
+                    line.write({'price_unit': price})

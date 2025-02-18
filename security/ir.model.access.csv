@@ -11,3 +11,5 @@ access_import_course_tutor_wizard_admin,import.course.tutor.wizard.access,model_
 access_import_course_tutor_wizard_user,import.course.tutor.wizard.access,model_import_course_tutor_wizard,group_curse_user,1,0,0,0
 access_res_config_settings_admin,res.config.settings.access,model_res_config_settings,base.group_system,1,1,1,1
 access_res_config_settings_user,res.config.settings.access,model_res_config_settings,group_curse_user,1,0,0,0
+access_curse_student_public,curse.student.public.access,model_curse_student,base.group_public,1,1,1,1
+access_curse_student_portal,curse.student.public.access,model_curse_student,base.group_portal,1,1,1,1

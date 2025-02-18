@@ -28,7 +28,7 @@
                         <div class="col-12 col-lg-6 o_setting_box">
                             <div>
                                 <label for="discount_percentage">Porcentaje de descuento de estudiantes</label>
-                                <field name="discount_percentage"/>
+                                <field name="discount_percentage" widget="percentage"/>
                             </div>
                             <div>
                                 <div class="text-muted">
