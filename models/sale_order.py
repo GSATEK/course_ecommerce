@@ -40,12 +40,14 @@ class SaleOrder(models.Model):
                                 'registration_date': fields.Date.today(),
                                 'curse_ids': [(6, 0, curse.ids)],
                             })
+
     @api.model
     def update_sale_order_lines(self):
-        orders = self.search([])
+        orders = self.search([('order_line.price_unit', '=', 1)])
         for order in orders:
             for line in order.order_line:
                 match = re.search(r'-\s*(\d+)\s*€', line.name)
                 if match:
                     price = float(match.group(1))
                     line.write({'price_unit': price})
+            self.env.cr.commit()
