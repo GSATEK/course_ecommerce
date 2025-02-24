@@ -113,6 +113,8 @@ class CustomWebsiteSale(WebsiteSale):
 
         if discount_active:
             discount_percentage = config.get('discount_percentage')
+            if discount_percentage:
+                discount_percentage = discount_percentage * 100
             discount_duration = config.get('discount_duration')
             discount_duration_type = config.get('discount_duration_type')
 
