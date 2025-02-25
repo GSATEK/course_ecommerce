@@ -31,10 +31,13 @@ class SaleOrder(models.Model):
                     curse = self.env['curse'].sudo().search([('product_id', '=', line.product_id.name)])
                     if curse:
                         existing_student = self.env['curse.student'].sudo().search([
-                            ('res_partner', '=', self.partner_id.id),
-                            ('curse_ids', 'in', curse.ids)
-                        ])
-                        if not existing_student:
+                            ('res_partner', '=', self.partner_id.id)
+                        ], limit=1)
+                        if existing_student:
+                            existing_student.write({
+                                'curse_ids': [(4, curse.id)]
+                            })
+                        else:
                             self.env['curse.student'].create({
                                 'res_partner': self.partner_id.id,
                                 'registration_date': fields.Date.today(),
