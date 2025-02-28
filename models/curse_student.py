@@ -111,7 +111,8 @@ class CurseStudent(models.Model):
         return {
             'type': 'ir.actions.act_window',
             'name': 'Facturado',
-            'res_model': 'sale.order',
+            'res_model': 'account.move',
             'view_mode': 'tree,form',
-            'domain': [('partner_id', '=', self.res_partner.id), ('invoice_status', '=', 'invoiced')],
+            'domain': [('partner_id', '=', self.res_partner.id), ('state', '=', 'posted'),
+                       ('move_type', '=', 'out_invoice')],
         }

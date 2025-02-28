@@ -137,6 +137,13 @@ class CustomWebsiteSale(WebsiteSale):
                         {'order_line': [(1, line.id, {'discount': discount_percentage}) for line in order.order_line]})
                     update_pricelist = False
 
+        redirection = self.checkout_redirection(order) or self.checkout_check_address(order)
+        if redirection:
+            return redirection
+
+        order.order_line._compute_tax_id()
+        self._update_so_external_taxes(order)
+        request.session['sale_last_order_id'] = order.id
         request.website.sale_get_order(update_pricelist=update_pricelist)
         extra_step = request.website.viewref('website_sale.extra_info_option')
         if extra_step.active:
